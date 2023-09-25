@@ -11,7 +11,7 @@ router.get("/service/photography", async (req, res) => {
     try {
         const query = { category: "photography" };
         const result = await serviceCollection.find(query).toArray();
-        res.send(result);
+    res.send(result);
     }
     catch (error) {
         console.error('Error fetching users using the native driver:', error);

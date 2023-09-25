@@ -61,13 +61,13 @@ router.delete('/deleteUser/:id', async (req, res) => {
     res.status(500).json(err)
   }
 });
-router.patch("/makerouterrove/:id", async (req, res) => {
+router.patch("/makeApprove/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const filter = { _id: new ObjectId(id) };
     const updateDoc = {
       $set: {
-        status: "routerroved",
+        status: "approved",
       },
     };
     const result = await authorityCollection.updateOne(filter, updateDoc);
@@ -101,9 +101,9 @@ router.get("/profileData/:email", async (req, res) => {
     const result = await authorityCollection.findOne(filter);
     return res.send(result);
   }
-  catch (err) {
-    res.status(500).json(err)
-  }
+
+  catch (err) {res.status(500).json(err)}
+
 });
 
 module.exports = router;
